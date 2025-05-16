@@ -1,10 +1,13 @@
-CC = clang
+CC = clang++
 CFLAGS = -Wall -Wextra -O2 -std=c++23
 
-SRC = src/*.cpp
+SRC = src/*.cpp \
+ 		src/csv_reader/*.cpp
+
+INC = src/csv_reader
 
 TARGET = build/text_classifier
 
-all: $(SRC)
+all: $(SRC) $(INC)
 	mkdir -p build
-	$(CC) -o $(TARGET) $^
+	$(CC) -I$(INC) -o $(TARGET) $^
